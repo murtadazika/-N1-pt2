@@ -1,87 +1,104 @@
-usuarios_cadastrados = list()
-usuario = dict()
+# LISTAS E DICIONÁRIOS
 
-#==========================================================================================================================================
-def adicionar_usuario():
-	print("\n__________________________________________")
-	usuario["_________________________________\n\nNome completo"] =   str(input("\n Informe o nome completo do usuário:\n\n "))
-	print("\n       --------------------------")
-	usuario["Endereço de e-mail"] = str(input("\n Insira o endereço de e-mail do usuário:\n\n "))
-	usuarios_cadastrados.append(usuario.copy())
-	a = input("\n__________________________________________\n\n     Usuário Cadastrado com sucesso! \n__________________________________________\n\n\n\n")
+usuariosCadastrados = []
+usuario = {}
 
+nomes = []
+emails = []
 
-def consultar_cadastros():
-	for e in usuarios_cadastrados:
+# FUNÇÕES
+
+def adicionar_remover_usuario():
+
+	resposta = int(input("\n       [1] Cadastrar um novo usuário\t            [3] Menu de opções\n\n       [2] Remover usuário cadastrado\n\n\n           Opção selecionada: "))
+	print("\n     ________________________________________________________________________________")
+
+	if resposta == 1:	
+		usuario ["\n         __________________________________________\n\n           Nome completo"] = str(input("\n           Informe o nome completo:\n\n           "))
+		print("\n           __________________________________________________________________________")
+		usuario ["\n           Endereço de e-mail"] = str(input("\n           Insira o endereço de e-mail\n\n           "))
+		usuariosCadastrados.append(usuario.copy())
+		nomes.append(usuario ["\n         __________________________________________\n\n           Nome completo"])
+		emails.append(usuario ["\n           Endereço de e-mail"])
+		print("\n     ________________________________________________________________________________\n\n\t\t\t        USUÁRIO CADASTRADO COM SUCESSO\n     ________________________________________________________________________________\n\n")
+		a = input()
+
+	elif resposta == 2:
+		print("\n     ________________________________________________________________________________\n\n\t\t     SERVIÇO INDISPONÍVEL, TENTE NOVAMENTE MAIS TARDE\n     ________________________________________________________________________________\n\n")
+		a = input()
+		resposta == 3
+
+	else:
+		resposta == 3
+
+def consultar():
+	resposta = int(input("\n       [1] Consultar por ordem de cadastro\t [3] Menu de opções\n\n       [2] Consultar por ordem alfabética\t [4] Verificar cadastro (por e-mail)\n\n\n           Opção selecionada: "))
+	print("\n     ________________________________________________________________________________")
+
+	if resposta == 1:
+		print("\n     ________________________________________________________________________________\n\n         POR ORDEM DE CADASTRO:")
+		for e in usuariosCadastrados:
 			for k, v in e.items():
-				print(f"\n{k}: \n {v}")
+				print(f"{k}: \n\n            {v}")
+				a = input()
 
-def consulta_alfabetica():
-	usuarios_cadastrados.sort(reverse = False)
-	return usuarios_cadastrados
+	elif resposta == 2:
+		alternativa = int(input("\n        Deseja consultar por:\n\n        [1] Nome completo\t [2] Endereço de e-mail\n\n\n           Opção selecionada: "))
+		print("\n     ________________________________________________________________________________")
+		
+		if alternativa == 1:
+			print("\n         NOMES COMPLETOS (A-Z):\n")
+			for v in sorted(nomes):
+				print(f"\n          {v}\n         ___________________________________________________________________________")
+			a = input()		
+		
+		elif alternativa == 2:
+			print("\n         ENDEREÇOS DE E-MAIL (A-Z):\n")
+			for v in sorted(emails):
+				print(f"\n          {v}\n         ___________________________________________________________________________")
+			a = input()
 
-def remover_usuario():
-	usuarios_cadastrados.remove()
-	return usuarios_cadastrados
-	
-							
-def tente_novamente():
-	a = input("\n__________________________________________\n\n [ ! ]         Tente novamente  ")
-	print("\n__________________________________________","\n"*20)
+	elif resposta == 4:
+		verificado = str(input("\n\t   Informe o endereço de e-mail do usuário a ser verificado:\n\n\t   "))
+		print("\n     ________________________________________________________________________________")
+		if verificado in emails:
+			print("\n\t\t\t        USUÁRIO CADASTRADO\n     ________________________________________________________________________________\n\n")
+			a = input()
+		else:
+			print("\n\t\t\t       USUÁRIO NÃO CADASTRADO\n     ________________________________________________________________________________\n\n")
+			a = input()
 
-#============================================	
-												
-def main():
+# PROGRAMA PRINCIPAL
 
-    resposta = "2"
+if (__name__ == "__main__"):
 
-    while resposta == "2":
+	resposta = 3
 
-	    resposta_usuario = str(input("\n__________________________________________\n\n        GERENCIADOR DE INSCRIÇÕES\n__________________________________________\n\n [1] Consultar usuários cadastrados\n\n [2] Adicionar/remover o usuário\n\n [3] Alterar dados cadastrais do usuário\n\n [4] Encerrar o sistema\n\n\n     Opção: "))
-	    print("\n__________________________________________")
-        #====================================================================================================================================
-	    if (resposta_usuario == "1"):
-		    alternativa = str(input("\n [1] Consultar por ordem de cadastro\n\n [2] Consultar por ordem alfabética\n\n [3] Menu de opções\n\n     Opção: "))
-		    if (alternativa == "1"):
-			    print("\n_________________________________________\n\n Usuários cadastrados no sistema:")
-			    consultar_cadastros()
-			    a = input(("\n__________________________________________\n\n\n"))
-		    elif (alternativa == "2"):
-			    print("lista em ordem alfabetica",consulta_alfabetica(usuarios_cadastrados))#Função para consultar cadastros por ordem alfabética (consulta_alfabetica)
-		    elif(alternativa == "3"):
-			    print()
-		    else:
-			    print()
+	print("\n"*15)
+	while (resposta == 3):
 
-        #====================================================================================================================================
-	    elif (resposta_usuario == "2"):
-		    alternativa = str(input("\n [1] Cadastrar novo usuário\n\n [2] Remover usuário (por e-mail)\n\n [3] Menu de Opções\n\n     Opção: "))
-		    if (alternativa == "1"):
-			    adicionar_usuario()
-		    elif (alternativa == "2"):
-			    remover_usuario()
-			    print("Escreva o email do usuário a ser removido",remover_usuario() ) 
-		    elif(alternativa == "3"):
-			    print()
-		    else:
-			    tente_novamente()
+		print("\n"*3)
+		respostaUsuario = int(input("\n     ________________________________________________________________________________\n\n                                 GERENCIADOR DE INSCRIÇÕES\n     ________________________________________________________________________________\n\n       [1] Consultar os usuários cadastrados\t    [3] Adicionar/remover usuário\n\n       [2] Alterar os dados do usuário\t            [4] Finalizar o programa\n\n\n           Opção selecionada: "))
+		print("\n     ________________________________________________________________________________")
+		
+		if respostaUsuario == 4:
+			resposta = int(input("\n\n           Deseja confirmar a ação?\n\n       [2] Confirmar\t [3] Cancelar \n\n\n           Opção selecionada: "))
+			print("\n     ________________________________________________________________________________","\n"*15)
+			if resposta == 3:
+				print()
+			else:
+				print("\n     ________________________________________________________________________________\n\n\t\t\t        PROGRAMA FINALIZADO\n     ________________________________________________________________________________\n\n\n\n")
+				break
+		
+		elif respostaUsuario == 3:
+			adicionar_remover_usuario()
 
-		#======================================================================================================================================	
-	    elif (resposta_usuario == "3"):
-		    print() #Função para alterar dados cadastrais (alterar_dados())
+		elif respostaUsuario == 2:
+			print("\n\t\t     SERVIÇO INDISPONÍVEL, TENTE NOVAMENTE MAIS TARDE\n     ________________________________________________________________________________\n\n")
+			a = input()
 
-		#======================================================================================================================================
-	    elif (resposta_usuario == "4"):
-		    resposta = str(input("\n     Deseja confirmar a ação?\n\n     [1] Confirmar\t [2] Cancelar\n\n\n     Opção: "))
-		    if (resposta != "2"):
-			    print("\n__________________________________________\n\n [ ! ]        Sistema finalizado\n__________________________________________")
-			    break
-        
-        #======================================================================================================================================
-	    else:
-		    tente_novamente()
+		elif respostaUsuario == 1:
+			consultar()
 
-        #======================================================================================================================================
-
-if(__name__ == "__main__"):
-    main()
+		else:
+			resposta == 3
