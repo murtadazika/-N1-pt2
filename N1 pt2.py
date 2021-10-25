@@ -1,9 +1,11 @@
-# LISTAS E DICIONÁRIOS
-# Integrantes do grupo e seus respectivos RA
+# INTEGRANTES DO GRUPO E RA'S:
+
 #GUILHERME DOS SANTOS XAVIER RA: 21593383
 #JONATHAN ALMEIDA DE SIQUEIRA FARIAS RA: 21516599
 #MATHEUS FERREIRA RA: 21531006
 #MURTADA MOBARAK MOHAMED KHAIR RA: 21623280 
+
+# LISTAS E DICIONÁRIOS:
 		
 usuariosCadastrados = []
 usuario = {}
@@ -11,7 +13,7 @@ usuario = {}
 nomes = []
 emails = []
 
-# FUNÇÕES
+# FUNÇÕES UTILIZADAS NO PROGRAMA:
 
 def adicionar_remover_usuario():
 
@@ -73,7 +75,7 @@ def consultar():
 			print("\n\t\t\t       USUÁRIO NÃO CADASTRADO\n     ________________________________________________________________________________\n\n")
 			a = input()
 
-# PROGRAMA PRINCIPAL
+# PROGRAMA PRINCIPAL:
 
 if (__name__ == "__main__"):
 
